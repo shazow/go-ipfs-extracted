@@ -3,9 +3,10 @@ package ipfsaddr
 import (
 	"testing"
 
-	path "github.com/ipfs/go-ipfs/path"
-	ma "gx/ipfs/QmUAQaWbKxGCUTuoQVvvicbQNZ9APF5pDGWyAZSe93AtKH/go-multiaddr"
-	peer "gx/ipfs/QmfMmLGoKzCHDN7cGgk64PJr4iipzidDRME8HABSJqvmhC/go-libp2p-peer"
+	peer "github.com/libp2p/go-libp2p-peer"
+	ma "github.com/multiformats/go-multiaddr"
+
+	path "github.com/shazow/go-ipfs-extracted/path"
 )
 
 var good = []string{

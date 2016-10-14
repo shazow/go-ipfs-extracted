@@ -3,14 +3,11 @@ package ipfsaddr
 import (
 	"errors"
 
-	ma "gx/ipfs/QmUAQaWbKxGCUTuoQVvvicbQNZ9APF5pDGWyAZSe93AtKH/go-multiaddr"
+	peer "github.com/libp2p/go-libp2p-peer"
+	ma "github.com/multiformats/go-multiaddr"
 
-	path "github.com/ipfs/go-ipfs/path"
-	logging "gx/ipfs/QmSpJByNKFX1sCsHBEp3R73FL4NF6FnQTEGyNAXHm2GS52/go-log"
-	peer "gx/ipfs/QmfMmLGoKzCHDN7cGgk64PJr4iipzidDRME8HABSJqvmhC/go-libp2p-peer"
+	path "github.com/shazow/go-ipfs-extracted/path"
 )
-
-var log = logging.Logger("ipfsaddr")
 
 // ErrInvalidAddr signals an address is not a valid ipfs address.
 var ErrInvalidAddr = errors.New("invalid ipfs address")
@@ -73,7 +70,6 @@ func ParseMultiaddr(m ma.Multiaddr) (a IPFSAddr, err error) {
 	// never panic.
 	defer func() {
 		if r := recover(); r != nil {
-			log.Debug("recovered from panic: ", r)
 			a = nil
 			err = ErrInvalidAddr
 		}
